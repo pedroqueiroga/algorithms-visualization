@@ -26,19 +26,14 @@ const edge = props => {
       backgroundColor: 'black',
       position: 'absolute',
       left: edge.x - width / 2,
-      top: edge.y
+      top: edge.y,
+      zIndex: -1
     };
   };
 
   return (
-    <div>
-      <div style={dynamicStyle()}>
-      </div>
-
-      <Node x={p1.x} y={p1.y} size={50} label='a' color='blue' />
-      <Node x={p2.x} y={p2.y} size={50} label='b' color='blue' />
-
-    </div>
+		<div style={dynamicStyle()}>
+		</div>
   );
 
 };
