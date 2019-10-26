@@ -2,11 +2,13 @@ import React from 'react';
 import classes from './Node.module.css';
 import PropTypes from 'prop-types';
 
+const DEFAULT_SIZE = 50;
+
 const node = (props) => {
 	let { id, color, size, x, y, label } = props;
-	if (!size) size = 50;
+	if (!size) size = DEFAULT_SIZE;
 	const dynamicStyle = {
-		backgroundColor: color ? color : 'rgba(0.6, 0.6, 0.6, 0.6)',
+		backgroundColor: color ? color : 'white',
 		width: size,
 		height: size,
 		left: x - size/2,

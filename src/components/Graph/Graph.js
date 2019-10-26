@@ -15,10 +15,10 @@ const graph = (props) => {
 
 	return (
 		<div>
-			{nodes.map((node, idx) => <Node key={idx} label={node.label} x={node.x} y={node.y} size={30} color='red'/>)}}
+			{nodes.map((node, idx) => <Node key={idx} label={node.label} x={node.x} y={node.y} size={30} />)}
 			{edges.map((edge, idx) => <Edge key={idx} 
-				p1={{ x: nodesHash[edge.labelNode1].x, y: nodesHash[edge.labelNode1].y }}
-				p2={{ x: nodesHash[edge.labelNode2].x, y: nodesHash[edge.labelNode2].y }}/>)}
+				p1={{ x: nodesHash[edge.labelNodeFrom].x, y: nodesHash[edge.labelNodeFrom].y }}
+				p2={{ x: nodesHash[edge.labelNodeTo].x, y: nodesHash[edge.labelNodeTo].y }}/>)}
 		</div>
 	)
 }
@@ -29,8 +29,8 @@ graph.propTypes = {
 	),
 	edges: PropTypes.arrayOf(
 		PropTypes.shape({
-			labelNode1: PropTypes.string,
-			labelNode2: PropTypes.string
+			labelNodeFrom: PropTypes.string,
+			labelNodeTo: PropTypes.string
 		})
 	)
 }
