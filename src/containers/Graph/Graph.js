@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import GraphComponent from '../../components/Graph/Graph';
 import classes from './Graph.module.css';
+import Vector from '../../lib/geometry/Vector';
 
 /**
  * Um container para interagir com um grafo.
@@ -23,10 +24,13 @@ class Graph extends Component {
 
 	isCircularAreaFree = ({x, y}, radius) => {
 		// check if there arent any nodes around,
-
+		const nodePoints = this.state.nodes.map( node => new Vector(node.x, node.y));
+		const point = new Vector(x, y);
+		let hasNodesAround = nodePoints.filter(node => node.subtract(point).len() < radius).length > 0;
 		// check if its not on a edge
+		let upOnEdge = false
 
-		return true;
+		return !hasNodesAround && !upOnEdge;
 	}
 
 	addNode = ({ label, x, y }) => {
@@ -39,6 +43,7 @@ class Graph extends Component {
 		const freeAreaRequiredRadius = DEFAULT_NODE_RADIUS*2+15;
 		if (!this.isCircularAreaFree({ x, y }, freeAreaRequiredRadius)) {
 			console.warn("You can't put a node on that position");
+			return false;
 		}
 		// push to "set" of nodes
 		let nodes = [...this.state.nodes];
