@@ -3,7 +3,7 @@ import './Node.css';
 import PropTypes from 'prop-types';
 
 const node = (props) => {
-	const { id, color, size, x, y } = props;
+	const { id, color, size, x, y, label } = props;
 	const dynamicStyle = {
 		backgroundColor: color ? color : 'black',
 		width: size ? size : 50,
@@ -13,7 +13,7 @@ const node = (props) => {
 	}
 	return (
 		<div className='Node' style={dynamicStyle} key={id}>
-
+			{label}
 		</div>
 	)
 }
@@ -24,6 +24,7 @@ node.propTypes = {
 	size: PropTypes.number,
 	x: PropTypes.number.isRequired,
 	y: PropTypes.number.isRequired,
+	label: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
 }
 
 export default node;
