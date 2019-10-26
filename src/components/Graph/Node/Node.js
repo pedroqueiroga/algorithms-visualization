@@ -3,11 +3,12 @@ import './Node.css';
 import PropTypes from 'prop-types';
 
 const node = (props) => {
-	const { id, color, size, x, y, label } = props;
+	let { id, color, size, x, y, label } = props;
+	if (!size) size = 50;
 	const dynamicStyle = {
 		backgroundColor: color ? color : 'black',
-		width: size ? size : 50,
-		height: size ? size : 50,
+		width: size,
+		height: size,
 		left: x - size/2,
 		top: y - size/2
 	}
