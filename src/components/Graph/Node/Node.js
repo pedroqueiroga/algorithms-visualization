@@ -8,8 +8,8 @@ const node = (props) => {
 		backgroundColor: color ? color : 'black',
 		width: size ? size : 50,
 		height: size ? size : 50,
-		left: x,
-		top: y
+		left: x - size/2,
+		top: y - size/2
 	}
 	return (
 		<div className='Node' style={dynamicStyle} key={id}>
