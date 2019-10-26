@@ -128,3 +128,4 @@ Vector.angleBetween = function(a, b) {
   return a.angleTo(b);
 };
 
+export default Vector;
