@@ -8,7 +8,7 @@ class Vector {
   /**
    * @param {Vector | { x: number, y: number, z: number }} v
    */
-  add = (v) => new Vector(this.x + this.y + v.y, y, this.z + v.z)
+  add = (v) => new Vector(this.x + v.x, this.y + v.y, this.z + v.z)
 
   /**
    * @param {Vector | {x: number, y: number, z: number}} v
