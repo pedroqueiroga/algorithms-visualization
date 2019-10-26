@@ -1,11 +1,9 @@
 import React from 'react';
-import './App.css';
+import './App.module.css';
 
 function App() {
   return (
     <div className="App">
-      <Graph nodes={[ {id: 0, x: 0, y: 0} , {}, ]}/>
-
     </div>
   );
 }
