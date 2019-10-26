@@ -96,11 +96,11 @@ class Graph extends Component {
 	handleNodeFormChange = (event) => {
 		let input = event.target.value;
 		// validate input;
-		this.setState({ controller: { nodeInput: input }})
+		this.setState({ controller: { ...this.state.controller, nodeInput: input }})
 	}
 	handleEdgeFormChange = (event) => {
 		let input = event.target.value;
-		this.setState({ controller: { edgeInput: input }})
+		this.setState({ controller: { ...this.state.controller, edgeInput: input }})
 	}
 
 	render() {
