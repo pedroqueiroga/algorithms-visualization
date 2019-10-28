@@ -14,9 +14,18 @@ const graph = (props) => {
 	})
 
 	return (
-		<div>
+		<div onClick={props.onClick ? props.onClick: null}
+      onDrag={props.onDrag ? props.onDrag : null}
+      onDragOver={(event) => {
+        if (props.onDragOver) {
+          props.onDragOver(event);
+        } else if (props.onDrag) {
+          props.onDrag(event);
+        }
+      }}
+      >
 			{nodes.map((node, idx) => <Node key={idx} label={node.label} x={node.x} y={node.y} size={30} />)}
-			{edges.map((edge, idx) => <Edge key={idx} 
+			{edges.map((edge, idx) => <Edge key={idx}
 				p1={{ x: nodesHash[edge.labelNodeFrom].x, y: nodesHash[edge.labelNodeFrom].y }}
 				p2={{ x: nodesHash[edge.labelNodeTo].x, y: nodesHash[edge.labelNodeTo].y }}/>)}
 		</div>
@@ -32,6 +41,11 @@ graph.propTypes = {
 			labelNodeFrom: PropTypes.string,
 			labelNodeTo: PropTypes.string
 		})
-	)
+	),
+	onClick: PropTypes.func,
+	onClickNode: PropTypes.func,
+  onDrag: PropTypes.func,
+  onDragOver: PropTypes.func,
+	onClickEdge: PropTypes.func
 }
 export default graph;

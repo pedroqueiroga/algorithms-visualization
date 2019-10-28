@@ -121,7 +121,6 @@ class Graph extends Component {
 			</div>
 		);
 	}
-
 }
 
 Graph.propTypes = {

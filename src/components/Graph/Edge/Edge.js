@@ -40,7 +40,8 @@ const edge = props => {
 
 edge.propTypes = {
   p1: PropTypes.shape({ x: PropTypes.number, y: PropTypes.number }).isRequired,
-  p2: PropTypes.shape({ x: PropTypes.number, y: PropTypes.number }).isRequired
+  p2: PropTypes.shape({ x: PropTypes.number, y: PropTypes.number }).isRequired,
+  onClick: PropTypes.func
 };
 
 export default edge;

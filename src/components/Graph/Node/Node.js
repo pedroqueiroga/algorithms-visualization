@@ -27,7 +27,8 @@ node.propTypes = {
 	size: PropTypes.number,
 	x: PropTypes.number.isRequired,
 	y: PropTypes.number.isRequired,
-	label: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+	label: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+	onClick: PropTypes.func
 }
 
 export default node;
