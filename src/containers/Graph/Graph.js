@@ -112,24 +112,41 @@ class Graph extends Component {
     } else {
       selectedNodes.splice(indexOfSelected, 1);
     }
-    this.setState({ selectedNodes })
+    this.setState({ selectedNodes });
   }
+
+  clickHandler = event => {
+
+    const nextAvailableLabel = (maximal, currentValue) => {
+      return currentValue.label > maximal ? currentValue.label : maximal;
+    };
+
+    const x = event.clientX;
+    const y = event.clientY;
+
+    const label = this.state.nodes.reduce(nextAvailableLabel, 0) + 1;
+    console.log(label, this.state.nodes);
+
+    this.addNode({ label, x, y });
+  };
 
   render() {
     const { name } = this.props;
     return (
-      <div style={{width: '100%', height: '100%'}}>
+      <div style={{ width: '100%', height: '100%' }}>
         <h3>{name}</h3>
         <input type="text" placeholder="Digite >>x y label" onChange={this.handleNodeFormChange}></input>
         <button onClick={this.handleAddNode}>Adicionar Nó</button>
         <input type="text" placeholder="Digite >>labelFrom labelTo" onChange={this.handleEdgeFormChange}></input>
         <button onClick={this.handleAddEdge}>Adicionar Aresta</button>
-        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%' }} onClick={this.clickHandler}>
           <div className={classes.display}>
-            <GraphComponent nodes={this.state.nodes}
+            <GraphComponent
+              nodes={this.state.nodes}
               edges={this.state.edges}
               onClickNode={this.clickNodeHandler}
-              selectedNodes={this.state.selectedNodes}></GraphComponent>
+              selectedNodes={this.state.selectedNodes}>
+            </GraphComponent>
           </div>
         </div>
       </div>
