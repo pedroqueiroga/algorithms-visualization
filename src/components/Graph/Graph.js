@@ -23,14 +23,16 @@ const graph = (props) => {
           props.onDrag(event);
         }
       }}
-    >
-      {nodes.map((node, idx) => <Node key={idx} label={node.label} x={node.x} y={node.y} size={30} />)}
+      >
+      {nodes.map((node, idx) => <Node key={idx} label={node.label} x={node.x} y={node.y} size={30}
+        onClick={props.onClickNode ? props.onClickNode : null}
+        selected={props.selectedNodes.indexOf(node.label) !== -1}/>)}
       {edges.map((edge, idx) => <Edge key={idx}
-        p1={{ x: nodesHash[edge.labelNodeFrom].x, y: nodesHash[edge.labelNodeFrom].y }}
-        p2={{ x: nodesHash[edge.labelNodeTo].x, y: nodesHash[edge.labelNodeTo].y }} />)}
+      	p1={{ x: nodesHash[edge.labelNodeFrom].x, y: nodesHash[edge.labelNodeFrom].y }}
+      	p2={{ x: nodesHash[edge.labelNodeTo].x, y: nodesHash[edge.labelNodeTo].y }}/>)}
     </div>
-  );
-};
+  )
+}
 
 graph.propTypes = {
   nodes: PropTypes.arrayOf(

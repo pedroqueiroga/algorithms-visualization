@@ -19,7 +19,8 @@ class Graph extends Component {
     controller: {
       nodeInput: '',
       edgeInput: ''
-    }
+    },
+    selectedNodes: []
   }
 
   isCircularAreaFree = ({ x, y }, radius) => {
@@ -103,19 +104,32 @@ class Graph extends Component {
     this.setState({ controller: { ...this.state.controller, edgeInput: input } });
   }
 
+  clickNodeHandler = (label) => {
+    let selectedNodes = [...this.state.selectedNodes];
+    let indexOfSelected = selectedNodes.indexOf(label);
+    if (indexOfSelected === -1) {
+      selectedNodes.push(label);
+    } else {
+      selectedNodes.splice(indexOfSelected, 1);
+    }
+    this.setState({ selectedNodes })
+  }
+
   render() {
     const { name } = this.props;
     return (
-      <div>
+      <div style={{width: '100%', height: '100%'}}>
         <h3>{name}</h3>
         <input type="text" placeholder="Digite >>x y label" onChange={this.handleNodeFormChange}></input>
         <button onClick={this.handleAddNode}>Adicionar Nó</button>
         <input type="text" placeholder="Digite >>labelFrom labelTo" onChange={this.handleEdgeFormChange}></input>
         <button onClick={this.handleAddEdge}>Adicionar Aresta</button>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '100%' }}>
           <div className={classes.display}>
             <GraphComponent nodes={this.state.nodes}
-              edges={this.state.edges}></GraphComponent>
+              edges={this.state.edges}
+              onClickNode={this.clickNodeHandler}
+              selectedNodes={this.state.selectedNodes}></GraphComponent>
           </div>
         </div>
       </div>
