@@ -32,8 +32,8 @@ const edge = props => {
   };
 
   return (
-		<div style={dynamicStyle()}>
-		</div>
+    <div style={dynamicStyle()}>
+    </div>
   );
 
 };
