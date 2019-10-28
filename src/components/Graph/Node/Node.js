@@ -6,24 +6,31 @@ const DEFAULT_SIZE = 50;
 
 const node = (props) => {
   let { id, color, size, x, y, selected, colorSelected, label, onClick } = props;
-  if (!size) size = DEFAULT_SIZE;
-	const dynamicStyle = {
+
+  if (!size) {
+    size = DEFAULT_SIZE;
+  }
+
+  const dynamicStyle = {
     backgroundColor: color ? color : 'white',
     width: size,
     height: size,
-    left: x - size/2,
-    top: y - size/2
-  }
+    left: x - size / 2,
+    top: y - size / 2
+  };
   if (selected) {
-    dynamicStyle.backgroundColor = colorSelected ? colorSelected : 'green'
+    dynamicStyle.backgroundColor = colorSelected ? colorSelected : 'green';
   }
-	return (
+  return (
     <div className={classes.Node} style={dynamicStyle} key={id}
-      onClick={props.onClick ? () => onClick(label) : null}>
+      onClick={props.onClick ? (event) => {
+        event.stopPropagation();
+        return onClick(label);
+      } : null}>
       {label}
     </div>
-	)
-}
+  );
+};
 
 node.propTypes = {
   id: PropTypes.number.isRequired,
@@ -35,6 +42,6 @@ node.propTypes = {
   onClick: PropTypes.func,
   selected: PropTypes.bool,
   colorSelected: PropTypes.string
-}
+};
 
 export default node;
