@@ -11,7 +11,6 @@ function App() {
         maxwidth={800}
         maxheight={800}>
         <Graph name="G1">
-
         </Graph>
       </VariableSizeContainer>
     </div>

@@ -49,7 +49,7 @@ class Graph extends Component {
 		let nodes = [...this.state.nodes];
 		nodes.push({label, x, y});
 		this.setState({ nodes });
-	}
+	} 
 
 	labelExists = (label) => this.state.nodes.filter( node => node.label === label).length > 0
 
@@ -117,16 +117,6 @@ class Graph extends Component {
 						<GraphComponent nodes={this.state.nodes}
 							edges={this.state.edges}></GraphComponent>
 					</div>
-					<div className={classes.vAxis}>
-						<p>0</p>
-						<div style={{ display: 'flex', borderColor: 'black', borderStyle: 'solid', borderLeftWidth: 0.5, height: '100%', width: 0}}/>
-						<p>300</p>
-					</div>
-				</div>
-				<div className={classes.hAxis}>
-					<p>0</p>
-					<div style={{display: "flex", borderColor: 'black', borderStyle: 'solid', borderBottomWidth: 0.5, width: '100%', height: 0}}></div>
-					<p>600</p>
 				</div>
 			</div>
 		);
